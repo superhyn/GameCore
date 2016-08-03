@@ -1,9 +1,6 @@
-package com.example.administrator.gamecore.beanService;
+package com.example.administrator.gamecore.beanservice;
 
 import com.example.administrator.gamecore.bean.TopImgBean;
-import com.example.administrator.gamecore.config.UrlConfig;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

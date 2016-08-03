@@ -3,9 +3,20 @@ package com.example.administrator.gamecore.fragment.home;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import com.example.administrator.gamecore.R;
+import com.example.administrator.gamecore.adapter.HomeListViewAdapter;
+import com.example.administrator.gamecore.bean.HomeBean;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 * 类描述：   
@@ -14,9 +25,41 @@ import android.view.ViewGroup;
 */
 public class HomeFragment extends Fragment implements HomeFragmentContract.HomeFragmentView {
 
+    private HomeListViewAdapter mAdapter;
+    private List<HomeBean.ResultsBean> mList;
+    private RecyclerView recyclerView;
+
+    private HomeFragmentContract.HomeFragmentModel model;
+    private HomeFragmentContract.HomeFragmentPresenter presenter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View view = inflater.inflate(R.layout.home_frg_layout, null);
+        model = new HomeFragmentModelIml();
+        presenter = new HomeFragmentPresenterIml(this, model);
+
+        //通知要下载数据了
+        presenter.onLoadHomeBean();
+
+        //接下来就可以获取数据源
+        mList = new ArrayList<>();
+        mAdapter = new HomeListViewAdapter(R.layout.home_frg_item_layout, mList);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.home_frg_recycler);
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        manager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(manager);
+
+        //设置适配器
+        recyclerView.setAdapter(mAdapter);
+        return view;
+    }
+
+    @Override
+    public void onLoadHomeBeanSuccess(HomeBean bean) {
+        Log.i("TAG","onLoadHomeBeanSuccess");
+        mList.addAll(bean.getResults());
+        mAdapter.notifyDataSetChanged();
     }
 }

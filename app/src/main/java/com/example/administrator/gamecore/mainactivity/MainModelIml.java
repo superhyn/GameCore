@@ -1,12 +1,8 @@
 package com.example.administrator.gamecore.mainactivity;
 
 import com.example.administrator.gamecore.bean.TopImgBean;
-import com.example.administrator.gamecore.beanService.TopImgBeanService;
-import com.example.administrator.gamecore.config.UrlConfig;
+import com.example.administrator.gamecore.beanservice.TopImgBeanService;
 
-import java.util.List;
-
-import okhttp3.Callback;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

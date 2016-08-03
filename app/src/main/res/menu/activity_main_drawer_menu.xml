@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/main_drawer_group" android:checkableBehavior="single">
+        <item android:id="@+id/main_drawer_subscrib" android:title="订阅"/>
+        <item android:id="@+id/main_drawer_message" android:title="消息"/>
+        <item android:id="@+id/main_drawer_collect" android:title="收藏"/>
+        <item android:id="@+id/main_drawer_download" android:title="下载"/>
+        <item android:id="@+id/main_drawer_contribute" android:title="投稿"/>
+    </group>
+</menu>

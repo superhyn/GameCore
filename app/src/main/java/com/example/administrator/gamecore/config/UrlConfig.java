@@ -30,4 +30,6 @@ public class UrlConfig {
         return "http://www.g-cores.com/api/originals/"+itemId+"/html_content?auth_exclusive=dpkynzs2q0wm9o5gi1r83fcabthl4eu";
     }
 
+    public static String HOME_BASE_URL="http://www.g-cores.com/api/originals/";
+    public static String HOME_END_KEY = "dpkynzs2q0wm9o5gi1r83fcabthl4eu";
 }

@@ -2,6 +2,7 @@ package com.example.administrator.gamecore.fragment.home;
 
 import com.example.administrator.gamecore.bean.HomeBean;
 import com.example.administrator.gamecore.beanservice.HomeBeanService;
+import com.example.administrator.gamecore.config.UrlConfig;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -15,13 +16,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 */
 public class HomeFragmentModelIml implements HomeFragmentContract.HomeFragmentModel {
     @Override
-    public void onLoadHomeBean(Callback<HomeBean> callback) {
+    public void onLoadHomeBean(int page,Callback<HomeBean> callback) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.g-cores.com/api/originals/")
+                .baseUrl(UrlConfig.HOME_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         HomeBeanService homeBeanService = retrofit.create(HomeBeanService.class);
-        Call<HomeBean> homeBeanCall = homeBeanService.getHomeBean();
+        Call<HomeBean> homeBeanCall = homeBeanService.getHomeBean(page,UrlConfig.HOME_END_KEY);
         homeBeanCall.enqueue(callback);
     }
 }

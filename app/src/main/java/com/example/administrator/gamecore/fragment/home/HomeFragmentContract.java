@@ -18,10 +18,10 @@ public class HomeFragmentContract {
     }
 
     public interface HomeFragmentPresenter extends IBasePresenter{
-        void onLoadHomeBean();
+        void onLoadHomeBean(int page);
     }
 
     public interface HomeFragmentModel extends IBaseModel{
-        void onLoadHomeBean(retrofit2.Callback<HomeBean> callback);
+        void onLoadHomeBean(int page,retrofit2.Callback<HomeBean> callback);
     }
 }

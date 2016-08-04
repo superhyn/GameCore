@@ -9,10 +9,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.administrator.gamecore.R;
 import com.example.administrator.gamecore.bean.HomeBean;
+import com.example.administrator.gamecore.widget.indicator.circletransformer.GlideCircleTransform;
 
 import java.util.List;
 
@@ -21,10 +23,10 @@ import java.util.List;
 * 创建人：Administrator glf  
 * 创建时间：2016/8/3 15:48   
 */
-public class HomeListViewAdapter extends BaseQuickAdapter<HomeBean.ResultsBean> {
+public class HomeRecyclerViewAdapter extends BaseQuickAdapter<HomeBean.ResultsBean> {
 
 
-    public HomeListViewAdapter(int layoutResId, List<HomeBean.ResultsBean> data) {
+    public HomeRecyclerViewAdapter(int layoutResId, List<HomeBean.ResultsBean> data) {
         super(layoutResId, data);
         Log.i("TAG","yunxingbuyunxinga");
     }
@@ -40,13 +42,14 @@ public class HomeListViewAdapter extends BaseQuickAdapter<HomeBean.ResultsBean> 
         baseViewHolder.setText(R.id.home_title,resultsBean.getData().getTitle());
         baseViewHolder.setText(R.id.home_desc,resultsBean.getData().getDesc());
 
-//        Glide.with(baseViewHolder.convertView.getContext())
-//                .load(resultsBean.getData().getCover_url())
-//                .into((ImageView) baseViewHolder.getView(R.id.home_iv));
-//
-//        Glide.with(baseViewHolder.convertView.getContext())
-//                .load(resultsBean.getData().getUser().getThumb_url())
-//                .into((ImageView) baseViewHolder.getView(R.id.home_user_iv));
+        Glide.with(baseViewHolder.convertView.getContext())
+                .load(resultsBean.getData().getCover_url())
+                .into((ImageView) baseViewHolder.getView(R.id.home_iv));
+
+        Glide.with(baseViewHolder.convertView.getContext())
+                .load(resultsBean.getData().getUser().getThumb_url())
+                .transform(new GlideCircleTransform(baseViewHolder.convertView.getContext()))
+                .into((ImageView) baseViewHolder.getView(R.id.home_user_iv));
 
 
     }

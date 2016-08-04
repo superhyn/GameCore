@@ -23,8 +23,8 @@ public class HomeFragmentPresenterIml implements HomeFragmentContract.HomeFragme
     }
 
     @Override
-    public void onLoadHomeBean() {
-        model.onLoadHomeBean(new Callback<HomeBean>() {
+    public void onLoadHomeBean(int page) {
+        model.onLoadHomeBean(page,new Callback<HomeBean>() {
             @Override
             public void onResponse(Call<HomeBean> call, Response<HomeBean> response) {
                 Log.i("TAG",response.body().toString());

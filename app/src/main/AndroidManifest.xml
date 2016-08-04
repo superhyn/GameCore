@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.administrator.gamecore">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".mainactivity.MainActivity">
+
+        </activity>
+        <activity android:name=".splashactivity.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:noHistory="true"
+            android:configChanges="orientation|keyboardHidden"  >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
